@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabil Pranav K - Portfolio</title>
+    <link rel="icon" href="i3.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #00203F;
+            color: #fff;
+            padding: 15px 0; /* Reduced padding for tighter alignment */
+            text-align: center;
+            border-bottom: 4px solid #FFD700;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        header nav {
+            margin-top: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #FFD700;
+            color: #00203F;
+            font-weight: bold;
+        }
+
+        /* Section Styling */
+        section {
+            display: none;
+            padding: 60px 0;
+        }
+        section.active {
+            display: block;
+        }
+
+        /* Showcase Section */
+        #showcase {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #F0F0F5;
+            padding: 5px 0; /* Reduced padding */
+            text-align: center;
+        }
+        #showcase img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #FFD700;
+            margin-bottom: 20px;
+        }
+        #showcase h2 {
+            font-size: 2.2em;
+            color: #00203F;
+            margin: 10px 0;
+        }
+        #showcase p {
+            color: #555;
+            font-size: 1.1em;
+            max-width: 700px;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        /* Main Content Section */
+        #main {
+            display: flex;
+            flex-direction: row;
+            background: #ffffff;
+            padding: 40px 0;
+        }
+        #main .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        #main-col {
+            flex: 3;
+            padding-right: 20px;
+        }
+        #main-col h2 {
+            font-size: 1.8em;
+            color: #00203F;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 5px;
+        }
+        #main-col p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            flex: 1;
+            background: #00203F;
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        #sidebar h3 {
+            color: #FFD700;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        #sidebar p {
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+        #sidebar p a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+        #sidebar p a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+        #sidebar p i {
+            color: #FFD700;
+            font-size: 1.2em;
+        }
+
+        #projects {
+            padding: 50px 0;
+            background-color: #ffffff;
+        }
+        #projects h1 {
+            font-size: 2.2em;
+            color: #00203F;
+            margin-bottom: 40px;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .project-card h3 {
+            font-size: 1.6em;
+            color: #00203F;
+            margin-top: 0;
+        }
+        .project-card p {
+            font-size: 1.05em;
+            color: #555;
+            line-height: 1.6;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .project-card button {
+            background-color: #FFD700;
+            color: #00203F;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-self: flex-start;
+        }
+        .project-card button:hover {
+            background-color: #FFA500;
+        }
+        .project-details {
+            display: none;
+            padding-top: 15px;
+        }
+        .project-card.expanded .project-details {
+            display: block;
+        }
+
+        #certificates {
+            padding: 70px 0;
+            background-color: #fff;
+        }
+        #certificates h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #00203F;
+        }
+        /* Certification Grid */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .certification {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        .certification:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .certification h3 {
+            color: #FFD700;
+            font-size: 20px;
+            margin: 10px 0;
+            height: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .certification i {
+            font-size: 40px;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        .certification img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+        .certification img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            header ul li {
+                display: block;
+                margin: 10px 0;
+            }
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            .certification h3 {
+                font-size: 20px;
+            }
+        }
+
+        #education {
+            padding: 70px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #education h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #00203F;
+            font-weight: bold;
+        }
+        .education-card {
+            background: #fdfdfd;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .education-card h3 {
+            margin-top: 0;
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .education-card h3 i {
+            margin-right: 10px;
+            color: #00203F;
+            font-size: 28px;
+        }
+        .education-card p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        #skills {
+            padding: 60px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #skills h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #00203F;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .skill {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .skill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 2px solid #FFD700;
+        }
+        .skill h3 {
+            margin: 10px 0;
+            color: #00203F;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .skill-details {
+            display: none; /* Hide details by default */
+            background: #e4e4e4;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #555;
+            transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+            opacity: 0; /* Initially hidden */
+            max-height: 0; /* Initially hidden */
+            overflow: hidden; /* Hide overflow */
+        }
+        .skill-details.show {
+            display: block; /* Show details */
+            opacity: 1; /* Fade in */
+            max-height: 500px; /* Allow for full height when visible */
+        }
+
+        @media (max-width: 768px) {
+            header ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            header ul li {
+                margin: 10px 0;
+            }
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+            #main {
+                padding: 40px 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #00203F;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Kabil Pranav K</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="projects">Projects</a></li>
+                    <li><a href="#" class="nav-link" data-section="certificates">Certifications</a></li>
+                    <li><a href="#" class="nav-link" data-section="education">Education</a></li>
+                    <li><a href="#" class="nav-link" data-section="skills">Skills</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section with Showcase and Main Content -->
+    <section id="home" class="active">
+        <div id="showcase">
+            <div class="container">
+                <img src="img2.jpg" alt="Kabil Pranav K">
+                <h2>Welcome to My Portfolio</h2>
+                <p>Discover my skills, projects, and achievements. With expertise in Computer and Communication Engineering, I specialize in software development, IoT, and cloud technologies, driven by a passion for problem-solving and innovation.</p>
+            </div>
+        </div>
+
+        <section id="main">
+            <div class="container">
+                <!-- Main Column -->
+                <div id="main-col">
+                    <h2>About Me</h2>
+                    <p>I am a Computer and Communication Engineer with a strong foundation in C, Python, and front-end development. I excel in team-based problem-solving and have a unique blend of analytical and creative thinking that enables effective troubleshooting. My experience in software development, coupled with my commitment to continuous learning, drives me to contribute meaningfully within an organization and advance my domain expertise.</p>
+                </div>
+                
+                <!-- Sidebar -->
+                <div id="sidebar">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:kabilpranavk@gmail.com">kabilpranavk@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+919150230006">+91 9150230006</a></p>
+                    <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/kabil-pranav-k-982b55217/" target="_blank">Kabil Pranav K</a></p>
+                    <p><i class="fab fa-github"></i> <a href="https://github.com/Kabil-Pranav-K" target="_blank">Kabil Pranav K</a></p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h1>My Projects</h1>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Project 1: Autonomous Navigation Vehicle (On Development)</h3>
+                    <p>A campus navigation system that uses GPS and onboard sensors for autonomous driving, allowing visitors to easily select their destination via a touchscreen.</p>
+                    <button onclick="toggleDetails('project1', this)">See Details</button>
+                    <div id="project1" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>This project involves designing an autonomous vehicle system equipped with GPS and sensors to navigate the campus. The vehicle features a touchscreen interface and can be manually controlled through a web app.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Project 2: Smart Energy Meter</h3>
+                    <p>A prepaid energy meter system that allows users to track and manage energy consumption with real-time calculations based on current and voltage sensors.</p>
+                    <button onclick="toggleDetails('project2', this)">See Details</button>
+                    <div id="project2" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>This smart energy meter calculates energy consumption in real time using voltage and current sensors, providing users with detailed insights into their usage. The system is prepaid, ensuring that users can monitor and control their energy usage.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Project 3: Discord Chat Bot (On Development)</h3>
+                    <p>A friendly Discord bot designed to provide emotional support and share positivity with users. Whether you need a bit of inspiration, a boost of encouragement, or some mood-elevating music.</p>
+                    <button onclick="toggleDetails('project3', this)">See Details</button>
+                    <div id="project3" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>This project is a mental wellness and mood-lifting Discord bot that interacts with users based on the mood keywords it detects in messages. It can recognize words associated with emotions like sadness, happiness, and love, responding with encouraging messages or suggesting music to match the user’s mood. Additionally, the bot provides inspirational quotes from an API and responds to greetings with friendly messages. It operates using secure environment variables and includes a function to keep the bot online continuously. This project creates a supportive, interactive companion for users on Discord.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Project 4: Enhancing IoT Network Security</h3>
+                    <p>This research develops a machine learning model to detect routing attacks in RPL networks, including new threats. It uses network traffic data to demonstrate accuracy and resilience against diverse attack forms, enhancing overall network security.</p>
+                    <button onclick="toggleDetails('project4', this)">See Details</button>
+                    <div id="project4" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>In this project, you focused on enhancing IoT network security by developing machine learning models to detect and resist routing attacks within RPL-based IoT networks. Through simulation using NetSim, you generated a dataset representing various types of routing attacks, including sinkhole and blackhole attacks. The ML models, particularly Random Forest and Support Vector Machine, demonstrated a high accuracy rate of 96%, effectively identifying and mitigating potential network vulnerabilities. This project showcases your ability to apply ML-based solutions to secure IoT networks and improve their reliability.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Project 5: Life Expectancy Prediction</h3>
+                    <p>This project mainly focuses on predicting the life expectancy of a person using ML algorithms in Python.</p>
+                    <button onclick="toggleDetails('project5', this)">See Details</button>
+                    <div id="project5" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>This project leverages machine learning to predict life expectancy, assisting policymakers and health organizations in making data-driven decisions. Using a dataset from the WHO with over 20 features, including economic, lifestyle, and healthcare factors, we applied multiple machine learning algorithms—Linear Regression, Random Forest, Decision Tree, and Ridge Regression. Among these, Random Forest provided the best accuracy at 95%, identifying key patterns and risk factors linked to life expectancy. Exploratory Data Analysis (EDA) tools, such as heatmaps and scatter plots, were utilized to understand relationships in the data, providing a robust basis for predictive modeling.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Project 6: Smart Attendance System</h3>
+                    <p>Utilizing an RFID-based system for attendance tracking in educational institutions, this project aims to simplify the attendance process.</p>
+                    <button onclick="toggleDetails('project6', this)">See Details</button>
+                    <div id="project6" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>This smart attendance system automates the attendance tracking process using RFID technology. Students are issued RFID cards, which they tap on a reader to register their attendance. The system records attendance in real-time, reducing manual effort and errors. The data is stored in a centralized database, allowing for easy retrieval and reporting. This project aims to streamline the attendance process, making it efficient and reliable for educational institutions.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project 7: Star Explorer</h3>
+                    <p>An intelligent robot equipped with autonomous navigation through dynamic environments.</p>
+                    <button onclick="toggleDetails('project7', this)">See Details</button>
+                    <div id="project7" class="project-details">
+                        <h4>Project Details</h4>
+                        <p>Summary: The Star Explorer project implements a grid-based pathfinding robot that detects obstacles and calculates the shortest path to a destination. Using randomized obstacle generation within a matrix, the robot's algorithm assigns path markers to navigate the grid. The robot checks adjacent cells for obstacles, updating its position and recalculating routes as needed, allowing it to find a clear and efficient route to its target. The project’s modular code structure ensures easy configuration of grid size, obstacle placement, and robot movement parameters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <div class="container">
+            <h1>My Certifications</h1>
+            <div class="certifications-grid">
+                <div class="certification">
+                    <h3>Certification 1: HTML and CSS</h3>
+                    <img src="html and css.png" alt="HTML and CSS Certificate">
+                </div>
+                <div class="certification">
+                    <h3>Certification 2: JavaScript</h3>
+                    <img src="js.png" alt="JavaScript Certificate">
+                </div>
+                <div class="certification">
+                    <h3>Certification 3: MATLAB Onramp</h3>
+                    <img src="mat.png" alt="MATLAB Onramp Certificate">
+                </div>
+                <div class="certification">
+                    <h3>Certification 4: Simulink Onramp</h3>
+                    <img src="simu.png" alt="Simulink Onramp Certificate">
+                </div>
+                <div class="certification">
+                    <h3>Certification 5: Email Writing</h3>
+                    <img src="email.png" alt="Email Writing Certificate">
+                </div>
+                <div class="certification">
+                    <h3>Certification 6: AWS</h3>
+                    <img src="aws.png" alt="AWS Certificate">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h1>My Education</h1>
+            <div class="education-card">
+                <h3><i class="fas fa-graduation-cap"></i>Bachelor of Engineering in Computer and Communication Engineering (Ongoing)</h3>
+                <p>Institution: Amrita Vishwa Vidyapeetham, Coimbatore</p>
+                <p>Expected Graduation Date: May 2025</p>
+                <p>Major: Computer and Communication Engineering</p>
+                <p>Relevant Coursework: Data Structures and Algorithms, Networking, Embedded Systems</p>
+                <p>CGPA: 7.61/10</p>
+            </div>
+            <div class="education-card">
+                <h3><i class="fas fa-school"></i>Class 12</h3>
+                <p>Institution: Saratha International School, Gobichettipalayam</p>
+                <p>Completion Date: 2021</p>
+                <p>Focus Area: Computer Science, Mathematics, Physics, Chemistry</p>
+                <p>Mark: 458/500</p>
+            </div>
+            <div class="education-card">
+                <h3><i class="fas fa-school"></i>Class 10</h3>
+                <p>Institution: Saratha International School, Gobichettipalayam</p>
+                <p>Completion Date: 2019</p>
+                <p>Focus Area: Computer Science, Mathematics, Physics, Chemistry</p>
+                <p>Mark: 412/500</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h1>My Skills</h1>
+            <div class="skills-grid">
+                <div class="skill" onclick="toggleSkillDetails('skill1')">
+                    <h3>Python Programming</h3>
+                    <div id="skill1" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I gained proficiency in Python through formal education and practical experience in various projects such as developing automation scripts, web apps, and data analysis tools.</p>
+                        <h4>Projects related to this skill:</h4>
+                        <ul>
+                            <li>Life Expectancy Prediction</li>
+                            <li>Attendance System Development</li>
+                            <li>Discord Chat Bot</li>
+                            <li>Enhancing IoT Network Security: Machine Learning Solutions for Securing RPL-Based IoT Networks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill2')">
+                    <h3>Cloud Computing</h3>
+                    <div id="skill2" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I completed AWS certification and worked on several cloud-based applications focusing on AWS EC2, S3, and scaling virtual environments.</p>
+                        <h4>Projects related to this skill:</h4>
+                        <ul>
+                            <li>Attendance Marking System</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill3')">
+                    <h3>HTML & CSS</h3>
+                    <div id="skill3" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I completed certification and worked on several projects which improved my skills in this area.</p>
+                        <h4>Projects related to this skill:</h4>
+                        <ul>
+                            <li>Attendance Marking System</li>
+                            <li>Portfolio</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill4')">
+                    <h3>SQL</h3>
+                    <div id="skill4" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I have practiced several queries on Leetcode.</p>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill5')">
+                    <h3>Machine Learning</h3>
+                    <div id="skill5" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I have hands-on experience by doing projects.</p>
+                        <h4>Projects related to this skill:</h4>
+                        <ul>
+                            <li>Life Expectancy Prediction</li>
+                            <li>Enhancing IoT Network Security: Machine Learning Solutions for Securing RPL-Based IoT Networks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill6')">
+                    <h3>Network Security</h3>
+                    <div id="skill6" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I've explored this area through a dedicated project involving security measures for IoT networks.</p>
+                        <h4>Projects related to this skill:</h4>
+                        <ul>
+                            <li>Enhancing IoT Network Security: Machine Learning Solutions for Securing RPL-Based IoT Networks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill7')">
+                    <h3>Software Development</h3>
+                    <div id="skill7" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>Through academic projects and real-world applications, I've gained valuable experience in software development.</p>
+                    </div>
+                </div>
+                <div class="skill" onclick="toggleSkillDetails('skill8')">
+                    <h3>Problem-Solving</h3>
+                    <div id="skill8" class="skill-details">
+                        <h4>How I acquired this skill:</h4>
+                        <p>I have a strong analytical mindset and enjoy tackling challenging problems in various domains.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Kabil Pranav K. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Dynamic Navigation -->
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(this.getAttribute('data-section')).classList.add('active');
+            });
+        });
+        function toggleDetails(projectId, button) {
+            const projectCard = document.getElementById(projectId).parentElement;
+            projectCard.classList.toggle("expanded");
+
+            // Toggle button text between "See Details" and "Hide Details"
+            button.textContent = projectCard.classList.contains("expanded") ? "Hide Details" : "See Details";
+        }
+
+        function toggleSkillDetails(skillId) {
+            const details = document.getElementById(skillId);
+            if (details.classList.contains('show')) {
+                details.classList.remove('show');
+            } else {
+                // Hide all other skill details
+                const allDetails = document.querySelectorAll('.skill-details');
+                allDetails.forEach(detail => detail.classList.remove('show'));
+                details.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>

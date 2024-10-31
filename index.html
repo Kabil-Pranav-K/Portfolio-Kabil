@@ -10,160 +10,254 @@
     <style>
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            padding: 0;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
-        }
-        .container {
-            width: 85%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        header {
-            background-color: #00203F;
-            color: #fff;
-            padding: 15px 0; /* Reduced padding for tighter alignment */
-            text-align: center;
-            border-bottom: 4px solid #FFD700;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        header nav {
-            margin-top: 10px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            background-color: #FFD700;
-            color: #00203F;
-            font-weight: bold;
-        }
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
 
-        /* Section Styling */
-        section {
-            display: none;
-            padding: 60px 0;
-        }
-        section.active {
-            display: block;
-        }
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
 
-        /* Showcase Section */
-        #showcase {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background: #F0F0F5;
-            padding: 5px 0; /* Reduced padding */
-            text-align: center;
-        }
-        #showcase img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #FFD700;
-            margin-bottom: 20px;
-        }
-        #showcase h2 {
-            font-size: 2.2em;
-            color: #00203F;
-            margin: 10px 0;
-        }
-        #showcase p {
-            color: #555;
-            font-size: 1.1em;
-            max-width: 700px;
-            line-height: 1.6;
-            text-align: center;
-            margin: 0 auto;
-        }
+header {
+    background-color: #00203F;
+    color: #fff;
+    padding: 15px 0; /* Reduced padding for tighter alignment */
+    text-align: center;
+    border-bottom: 4px solid #FFD700;
+}
 
-        /* Main Content Section */
-        #main {
-            display: flex;
-            flex-direction: row;
-            background: #ffffff;
-            padding: 40px 0;
-        }
-        #main .container {
-            display: flex;
-            justify-content: space-between;
-        }
-        #main-col {
-            flex: 3;
-            padding-right: 20px;
-        }
-        #main-col h2 {
-            font-size: 1.8em;
-            color: #00203F;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 5px;
-        }
-        #main-col p {
-            color: #444;
-            line-height: 1.6;
-            font-size: 1.05em;
-        }
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
 
-        /* Sidebar */
-        #sidebar {
-            flex: 1;
-            background: #00203F;
-            color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        #sidebar h3 {
-            color: #FFD700;
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-        #sidebar p {
-            display: flex;
-            align-items: center;
-            font-size: 1em;
-            margin: 10px 0;
-        }
-        #sidebar p a {
-            color: #FFD700;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
-            margin-left: 10px;
-            display: inline-flex;
-            align-items: center;
-        }
-        #sidebar p a:hover {
-            color: #fff;
-            transform: scale(1.1);
-        }
-        #sidebar p i {
-            color: #FFD700;
-            font-size: 1.2em;
-        }
+header nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #FFD700;
+    color: #00203F;
+    font-weight: bold;
+}
+
+/* Section Styling */
+section {
+    display: none;
+    padding: 60px 0;
+}
+
+section.active {
+    display: block;
+}
+
+/* Showcase Section */
+#showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #F0F0F5;
+    padding: 40px 0; /* Increased padding for better spacing */
+    text-align: center;
+}
+
+#showcase img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #FFD700;
+    margin-bottom: 20px;
+}
+
+#showcase h2 {
+    font-size: 2.2em;
+    color: #00203F;
+    margin: 10px 0;
+}
+
+#showcase p {
+    color: #555;
+    font-size: 1.1em;
+    max-width: 700px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Main Content Section */
+#main {
+    display: flex;
+    flex-direction: row;
+    background: #ffffff;
+    padding: 40px 0;
+}
+
+#main .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#main-col {
+    flex: 3;
+    padding-right: 20px;
+}
+
+#main-col h2 {
+    font-size: 1.8em;
+    color: #00203F;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 5px;
+}
+
+#main-col p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 1.05em;
+}
+
+/* Sidebar */
+#sidebar {
+    flex: 1;
+    background: #00203F;
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar h3 {
+    color: #FFD700;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+#sidebar p {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+#sidebar p a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+#sidebar p a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+#sidebar p i {
+    color: #FFD700;
+    font-size: 1.2em;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack links vertically */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Reduce margin for better spacing */
+    }
+
+    #showcase img {
+        width: 150px; /* Smaller image on mobile */
+        height: 150px;
+    }
+
+    #showcase h2 {
+        font-size: 1.8em; /* Adjust heading size */
+    }
+
+    #showcase p {
+        font-size: 1em; /* Adjust paragraph size */
+    }
+
+    #main {
+        flex-direction: column; /* Stack columns */
+        padding: 20px 0; /* Reduced padding */
+    }
+
+    #main-col {
+        padding-right: 0; /* Remove right padding on mobile */
+        margin-bottom: 20px; /* Add space below */
+    }
+
+    #sidebar {
+        padding: 20px; /* Reduce padding */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px; /* Smaller heading for small devices */
+    }
+
+    #showcase img {
+        width: 120px; /* Even smaller image */
+        height: 120px;
+    }
+
+    #showcase h2 {
+        font-size: 1.5em; /* Smaller heading */
+    }
+
+    #showcase p {
+        font-size: 0.9em; /* Smaller paragraph */
+        max-width: 90%; /* Use more width on small screens */
+    }
+
+    #main-col h2 {
+        font-size: 1.5em; /* Smaller heading in main column */
+    }
+
+    #sidebar h3 {
+        font-size: 1.2em; /* Smaller sidebar heading */
+    }
+}
+
 
         #projects {
             padding: 50px 0;
@@ -584,7 +678,7 @@
                 </div>
                 <div class="certification">
                     <h3>Certification 6: AWS</h3>
-                    <img src="AWS.png" alt="AWS Certificate">
+                    <img src="aws.png" alt="AWS Certificate">
                 </div>
             </div>
         </div>

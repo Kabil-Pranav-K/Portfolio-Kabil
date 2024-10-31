@@ -385,86 +385,112 @@ section.active {
             color: #555;
             margin: 5px 0;
         }
-
         #skills {
-            padding: 60px 0;
-            background-color: #fff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        #skills h1 {
-            font-size: 36px;
-            margin-bottom: 40px;
-            text-align: center;
-            color: #00203F;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 0 20px;
-        }
-        .skill {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .skill:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            border: 2px solid #FFD700;
-        }
-        .skill h3 {
-            margin: 10px 0;
-            color: #00203F;
-            font-size: 24px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-        .skill-details {
-            display: none; /* Hide details by default */
-            background: #e4e4e4;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #555;
-            transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
-            opacity: 0; /* Initially hidden */
-            max-height: 0; /* Initially hidden */
-            overflow: hidden; /* Hide overflow */
-        }
-        .skill-details.show {
-            display: block; /* Show details */
-            opacity: 1; /* Fade in */
-            max-height: 500px; /* Allow for full height when visible */
-        }
+    padding: 60px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
 
-        @media (max-width: 768px) {
-            header ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            header ul li {
-                margin: 10px 0;
-            }
-            .container {
-                width: 95%;
-                padding: 10px;
-            }
-            #main {
-                padding: 40px 0;
-            }
-        }
+#skills h1 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #00203F;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Space between grid items */
+    padding: 0 20px; /* Padding around the grid */
+}
+
+.skill {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text */
+}
+
+.skill:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 2px solid #FFD700; /* Highlight border on hover */
+}
+
+.skill h3 {
+    margin: 10px 0;
+    color: #00203F;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.skill-details {
+    display: none; /* Hide details by default */
+    background: #e4e4e4;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #555;
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    max-height: 0; /* Initially hidden */
+    overflow: hidden; /* Hide overflow */
+}
+
+.skill-details.show {
+    display: block; /* Show details */
+    opacity: 1; /* Fade in */
+    max-height: 500px; /* Allow for full height when visible */
+}
+
+.project-list {
+    list-style-type:disc; /* Use bullet points */
+    padding-left: 20px; /* Add padding for indentation */
+    margin: 0; /* Remove default margin */
+}
+
+.project-list li {
+    margin: 5px 0; /* Control spacing between list items */
+    color: #555; /* Optional: change text color */
+}
+
+@media (max-width: 768px) {
+    header ul {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: center; /* Center items */
+    }
+
+    header ul li {
+        margin: 10px 0; /* Space between items */
+    }
+
+    .container {
+        width: 95%; /* Use 95% width on smaller screens */
+        padding: 10px; /* Add padding */
+    }
+
+    #main {
+        padding: 40px 0; /* Reduce padding */
+    }
+
+    /* Additional responsive styles for skills grid */
+    .skills-grid {
+        padding: 0; /* Remove padding for smaller screens */
+    }
+}
+
 
         /* Footer */
         footer {
@@ -673,7 +699,7 @@ section.active {
                         <h4>How I acquired this skill:</h4>
                         <p>I gained proficiency in Python through formal education and practical experience in various projects such as developing automation scripts, web apps, and data analysis tools.</p>
                         <h4>Projects related to this skill:</h4>
-                        <ul>
+                        <ul class="project-list">
                             <li>Life Expectancy Prediction</li>
                             <li>Attendance System Development</li>
                             <li>Discord Chat Bot</li>
@@ -751,7 +777,6 @@ section.active {
             </div>
         </div>
     </section>
-
 
     <!-- Footer -->
     <footer>
